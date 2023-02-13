@@ -1,12 +1,11 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, Image } from "react-native";
+import { ScrollView } from "react-native-gesture-handler";
+import React, { useRef } from "react";
+import ServiceCardList from "./Components/ServiceCardList";
 
-import { NavigationContainer } from "@react-navigation/native";
-import AuthNavigation from "./navigation/authNavigation";
-import { navigationRef } from "./navigation/rootNavigation";
-import navigationTheme from "./navigation/navigationTheme";
-import RecomendedScreen from "./screens/RecomendedScreen";
-import ServiceCard from "./Components/ServiceCard";
-import { SafeAreaView } from "react-native-safe-area-context";
+import Screen from "./screens/Screen";
+import ServiceDetails from "./screens/ServiceDetailsScreen";
+import GalleryList from "./Components/GalleryList";
 
 export default function App() {
   const service = {
@@ -18,20 +17,11 @@ export default function App() {
 
   const { name, wage, rating, autor } = service;
   const showServDetails = (service) => {};
-
+  const scrrollView = useRef();
   return (
     // <NavigationContainer ref={navigationRef} theme={navigationTheme}>
     //   <AuthNavigation />
-
-    <ServiceCard
-      name={name}
-      autor={autor}
-      wage={wage}
-      rating={rating}
-      onPress={() => {
-        showServDetails({});
-      }}
-    />
+    <ServiceDetails />
 
     // </NavigationContainer>
   );

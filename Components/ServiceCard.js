@@ -1,7 +1,7 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 import React from "react";
 import { TouchableWithoutFeedback } from "react-native-gesture-handler";
-import { Image } from "react-native-expo-image-cache";
+
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 export default function ServiceCard({
@@ -10,21 +10,27 @@ export default function ServiceCard({
   imageUrl,
   onPress,
   thumbnailUrl,
+  profilePic,
   wage,
   rating,
 }) {
   return (
-    <TouchableWithoutFeedback onPress={onPress}>
+    <TouchableOpacity onPress={onPress} activeOpacity={0.8}>
       <View style={styles.card}>
         <Image
           style={styles.image}
-          uri={imageUrl}
+          defaultSource={imageUrl}
           preview={{ uri: thumbnailUrl }}
-          tint="light"
+        />
+        <Image
+          style={styles.person}
+          defaultSource={profilePic}
+          preview={{ uri: thumbnailUrl }}
         />
         <View
           style={{
             margin: 15,
+            paddingTop: 35,
           }}
         >
           <View style={{ flexDirection: "row" }}>
@@ -43,40 +49,44 @@ export default function ServiceCard({
                 <Text style={styles.rating}>{rating}</Text>
               </View>
 
-              <Text style={styles.wage}>{wage}$/hr</Text>
+              <Text style={styles.wage}>{wage}$/hr.</Text>
             </View>
           </View>
         </View>
       </View>
-    </TouchableWithoutFeedback>
+    </TouchableOpacity>
   );
 }
 const styles = StyleSheet.create({
   card: {
     backgroundColor: "#fff",
     marginVertical: 10,
-    borderRadius: 25,
+    borderRadius: 10,
     overflow: "hidden",
-    width: "80%",
+    width: "100%",
+    margin: 20,
+    padding: 10,
     alignSelf: "center",
   },
   image: {
     width: "100%",
-    height: 100,
+    height: 110,
+    position: "absolute",
+    borderRadius: 10,
   },
   autor: {
     marginTop: 5,
-    fontSize: "20",
+    fontSize: "15",
     color: "black",
   },
   name: {
     marginTop: 5,
-    fontSize: "15",
+    fontSize: "10",
     color: "gray",
   },
   wage: {
     marginTop: 5,
-    fontSize: "15",
+    fontSize: "10",
     color: "green",
     alignSelf: "flex-end",
   },
@@ -85,5 +95,12 @@ const styles = StyleSheet.create({
     fontSize: "15",
     color: "black",
     alignSelf: "flex-end",
+  },
+  person: {
+    width: 60,
+    height: 60,
+    borderRadius: 35,
+    top: 15,
+    left: 10,
   },
 });

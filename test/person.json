@@ -1,0 +1,23 @@
+{
+    "id":"",
+   "general-info":{
+    "name":"",
+    "specializations":[],
+    "wage":"",
+    "avg-rating":"",
+    "profile-pict-url":"",
+    "tumb-pict-url":"",
+    "location":""    
+   } ,
+   "ratings":[],
+   "services":[
+    {"category":"","list":[{"id":"","duration":"","rating":"","price":"","details":""}]}
+    
+
+   ],
+   "about":{},
+   "gallery":[]
+
+
+   
+}

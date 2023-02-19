@@ -14,8 +14,10 @@ import colors from "../config/colors";
 
 export default function ProfileItem({
   title,
-  subTitle,
+  specializations,
+  wage,
   image,
+  rating,
   IconComponent,
   onPress,
   renderRightActions,
@@ -31,7 +33,7 @@ export default function ProfileItem({
     //     style={{ width: "100%" }}
     //   >
     <View style={styles.container}>
-      <Image source={require("../images/profile.webp")} style={styles.image} />
+      <Image source={image} style={styles.image} />
 
       <View
         style={{
@@ -43,8 +45,8 @@ export default function ProfileItem({
       >
         <View style={{ flexDirection: "row" }}>
           <View style={{ flex: 1 }}>
-            <Text style={styles.autor}>{"Adam Turcan"}</Text>
-            <Text style={styles.name}>{"Guitar tutor, 3+"}</Text>
+            <Text style={styles.autor}>{title}</Text>
+            <Text style={styles.name}>{specializations}</Text>
           </View>
           <View style={{ flex: 1, paddingTop: 2 }}>
             <View style={styles.rating}>
@@ -54,10 +56,10 @@ export default function ProfileItem({
                 size={15}
                 style={{ paddingTop: 6 }}
               />
-              <Text style={styles.rating}>{"5"}</Text>
+              <Text style={styles.rating}>{rating}</Text>
             </View>
 
-            <Text style={styles.wage}>${"10-20"}/hr.</Text>
+            <Text style={styles.wage}>${wage}/hr.</Text>
           </View>
         </View>
       </View>

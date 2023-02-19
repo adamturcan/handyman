@@ -12,7 +12,7 @@ export default function ServiceItemList({ services }) {
       style={{
         backgroundColor: "white",
         borderRadius: 20,
-        height: "100%",
+        height: "80%",
       }}
     >
       <FlatList
@@ -20,7 +20,7 @@ export default function ServiceItemList({ services }) {
         data={services}
         style={{ borderRadius: 20 }}
         contentContainerStyle={{ flexGrow: 1 }}
-        keyExtractor={(service) => service.name.toString()}
+        keyExtractor={(service) => service.category.toString()}
         renderItem={({ item }) => (
           <View>
             <Text
@@ -31,9 +31,9 @@ export default function ServiceItemList({ services }) {
                 borderRadius: 20,
               }}
             >
-              {item.name}
+              {item.category}
             </Text>
-            {item.services.map((serv) => {
+            {item.list.map((serv) => {
               return (
                 <View key={serv.id} style={{ marginBottom: 10 }}>
                   <ServiceItem service={serv} />

@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { View, Text, StyleSheet, FlatList, Image, Button } from "react-native";
-
+import ExpoFastImage from "expo-fast-image";
 import { Video, AVPlaybackStatus } from "expo-av";
 import ImageInput from "./ImageInput";
 import { StatusBar } from "expo-status-bar";
@@ -8,6 +8,7 @@ import { StatusBar } from "expo-status-bar";
 export default function GalleryList({ media }) {
   const video = React.useRef(null);
   const [status, setStatus] = React.useState({});
+
   return (
     <View>
       <FlatList
@@ -17,8 +18,9 @@ export default function GalleryList({ media }) {
         pagingEnabled
         showsHorizontalScrollIndicator={false}
         renderItem={({ item }) => {
+          console.log(item);
           if (item.type == "image") {
-            return <Image defaultSource={item.source} style={styles.image} />;
+            return <ExpoFastImage source={item.source} style={styles.image} />;
           } else {
             return (
               <Video
@@ -27,8 +29,6 @@ export default function GalleryList({ media }) {
                 source={require("../images/sigma.mp4")}
                 useNativeControls
                 resizeMode="contain"
-                isLooping
-                shouldPlay
               />
             );
           }
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
   },
   image: {
     width: 300,
-    height: "100%",
+    height: 200,
     borderRadius: 20,
     marginLeft: 20,
   },
@@ -52,6 +52,7 @@ const styles = StyleSheet.create({
     width: 300,
     alignSelf: "stretch",
     borderRadius: 20,
+    marginLeft: 20,
   },
   button: {
     margin: 10,

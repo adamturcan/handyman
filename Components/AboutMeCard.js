@@ -4,7 +4,7 @@ import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 import { Image } from "react-native-expo-image-cache";
 import AppButton from "./AppButton";
 
-export default function AboutMeCard({ paragraph, onPress, name }) {
+export default function AboutMeCard({ paragraph, onPress, intro }) {
   let visibleMore;
   let par;
   if (paragraph.length > 214) {
@@ -18,7 +18,7 @@ export default function AboutMeCard({ paragraph, onPress, name }) {
     <TouchableWithoutFeedback onPress={onPress}>
       <View style={styles.card}>
         <View style={{ height: 150 }}>
-          <Text style={styles.intro}>Hey, My Name Is {name}</Text>
+          <Text style={styles.intro}>{intro}</Text>
           <Text style={styles.paragraph}>{par}</Text>
         </View>
 
@@ -44,7 +44,7 @@ export default function AboutMeCard({ paragraph, onPress, name }) {
 const styles = StyleSheet.create({
   card: {
     marginTop: 0,
-    backgroundColor: "#fff",
+    backgroundColor: "white",
     marginVertical: 10,
     borderRadius: 20,
 
